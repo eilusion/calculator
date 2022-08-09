@@ -23,12 +23,28 @@ body {
     border: 5px solid black;
 }
 
-.screen {
+.display {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
     width: 360px;
     height: 130px;
     background-color: rgb(255, 255, 255);
     margin: 20px;
     border-radius: 3px;
+}
+
+.displays {
+    margin-right: 10px;
+}
+
+.displayTop {
+    font-size: 30px;
+}
+
+.displayBot {
+    font-size: 60px;
 }
 
 .resetBtns {
