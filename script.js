@@ -45,34 +45,33 @@ function operate(x, y, operator) {
 // add click events to display value on screen
 
 numBtns.forEach(numBtn => numBtn.addEventListener('click', function () {
-    let sum = displayBot.textContent += numBtn.innerHTML;
-    displayValue = sum;
+    displayValue = displayBot.textContent += numBtn.innerHTML;
     console.log(displayValue);
 }));
 
 divideBtn.addEventListener('click', function () {
-    firstNum = Number.parseFloat(displayValue);
+    firstNum = displayValue;
     displayTop.textContent = `${firstNum} ÷`;
     displayBot.textContent = '';
     operator = '/';
 });
 
 multiplyBtn.addEventListener('click', function () {
-    firstNum = Number.parseFloat(displayValue);
+    firstNum = displayValue;
     displayTop.textContent = `${firstNum} *`;
     displayBot.textContent = '';
     operator = '*';
 });
 
 subtractBtn.addEventListener('click', function () {
-    firstNum = Number.parseFloat(displayValue);
+    firstNum = displayValue;
     displayTop.textContent = `${firstNum} -`;
     displayBot.textContent = '';
     operator = '-';
 });
 
 addBtn.addEventListener('click', function () {
-    firstNum = Number.parseFloat(displayValue);
+    firstNum = displayValue;
     displayTop.textContent = `${firstNum} +`;
     displayBot.textContent = '';
     operator = '+';
@@ -81,9 +80,8 @@ addBtn.addEventListener('click', function () {
 // calls operate function to sum entered numbers
 
 equalsBtn.addEventListener('click', function () {
-    secondNum = Number.parseFloat(displayValue);
-    outcome = operate(firstNum, secondNum, operator).toFixed(2);
-    displayBot.textContent = outcome
+    secondNum = displayValue;
+    displayBot.textContent = operate(firstNum, secondNum, operator).toFixed(2);
     displayTop.textContent = `${firstNum} ${operator} ${secondNum} =`;
 });
 
