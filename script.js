@@ -12,6 +12,7 @@ let displayValue;
 let firstNum;
 let secondNum;
 let operator;
+let outcome;
 
 function divide(x, y) {
     return x / y;
@@ -26,14 +27,22 @@ function add(x, y) {
     return x + y;
 };
 
+// calls the correct operator
+
 function operate(x, y, operator) {
+    x = Number(x)
+    y = Number(y)
     switch (operator) {
         case '/': return divide(x, y);
         case '*': return multiply(x, y);
         case '-': return subtract(x, y);
         case '+': return add(x, y);
+        default:
+            return null
     };
 };
+
+// add click events to display value on screen
 
 numBtns.forEach(numBtn => numBtn.addEventListener('click', function () {
     let sum = displayBot.textContent += numBtn.innerHTML;
@@ -69,11 +78,16 @@ addBtn.addEventListener('click', function () {
     operator = '+';
 });
 
+// calls operate function to sum entered numbers
+
 equalsBtn.addEventListener('click', function () {
     secondNum = Number.parseFloat(displayValue);
-    displayBot.textContent = operate(firstNum, secondNum, operator).toFixed(2);
+    outcome = operate(firstNum, secondNum, operator).toFixed(2);
+    displayBot.textContent = outcome
     displayTop.textContent = `${firstNum} ${operator} ${secondNum} =`;
 });
+
+// clears screen and digits stored
 
 clearBtn.addEventListener('click', function () {
     displayBot.textContent = '';
