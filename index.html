@@ -11,32 +11,33 @@
     <div class="container">
         <div class="calculator">
             <div class="display">
-                <div class="displayTop displays">0</div>
-                <div class="displayBot displays">0</div>
+                <div class="displayTop displays"></div>
+                <div class="displayBot displays"></div>
             </div>
             <div class="resetBtns">
                 <div class="clearBtn resetBtn">CLEAR</div>
                 <div class="deleteBtn resetBtn">DELETE</div>
             </div>
             <div class="numberPad">
-                <div class="num7 numBtn">7</div>
-                <div class="num8 numBtn">8</div>
-                <div class="num9 numBtn">9</div>
-                <div class="divide numBtn">÷</div>
-                <div class="num4 numBtn">4</div>
-                <div class="num5 numBtn">5</div>
-                <div class="num6 numBtn">6</div>
-                <div class="multiply numBtn">X</div>
-                <div class="num1 numBtn">1</div>
-                <div class="num2 numBtn">2</div>
-                <div class="num3 numBtn">3</div>
-                <div class="minus numBtn">-</div>
-                <div class="decimal numBtn">.</div>
-                <div class="num0 numBtn">0</div>
-                <div class="equals numBtn">=</div>
-                <div class="add numBtn">+</div>
+                <div class="num7 numBtn padBtn">7</div>
+                <div class="num8 numBtn padBtn">8</div>
+                <div class="num9 numBtn padBtn">9</div>
+                <div class="divide padBtn" id="operator">÷</div>
+                <div class="num4 numBtn padBtn">4</div>
+                <div class="num5 numBtn padBtn">5</div>
+                <div class="num6 numBtn padBtn">6</div>
+                <div class="multiply padBtn" id="operator">X</div>
+                <div class="num1 numBtn padBtn">1</div>
+                <div class="num2 numBtn padBtn">2</div>
+                <div class="num3 numBtn padBtn">3</div>
+                <div class="subtract padBtn" id="operator">-</div>
+                <div class="decimal numBtn padBtn">.</div>
+                <div class="num0 numBtn padBtn">0</div>
+                <div class="equals padBtn" id="operator">=</div>
+                <div class="add padBtn" id="operator">+</div>
             </div>
         </div>
     </div>
+    <script src="./script.js"></script>
 </body>
 </html>
