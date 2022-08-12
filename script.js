@@ -9,10 +9,8 @@ const decimal = document.querySelector('.decimal');
 const equalsBtn = document.querySelector('.equals');
 const clearBtn = document.querySelector('.clearBtn');
 let displayValue;
-let firstNum;
-let secondNum;
-let operator;
-let outcome;
+let values = []
+
 
 function divide(x, y) {
     return x / y;
@@ -50,10 +48,16 @@ numBtns.forEach(numBtn => numBtn.addEventListener('click', function () {
 }));
 
 divideBtn.addEventListener('click', function () {
-    firstNum = displayValue;
-    displayTop.textContent = `${firstNum} ÷`;
-    displayBot.textContent = '';
-    operator = '/';
+    if (values.length < 1) {
+        values.push(displayValue);
+        displayTop.textContent = `${displayValue} ÷`;
+        displayBot.textContent = '';
+        operator = '/'
+    } else if (values.length > 0) {
+        let total = values[0] / displayValue;
+        displayTop.textContent = total;
+        displayBot.textContent = '';
+    }
 });
 
 multiplyBtn.addEventListener('click', function () {
@@ -81,7 +85,8 @@ addBtn.addEventListener('click', function () {
 
 equalsBtn.addEventListener('click', function () {
     secondNum = displayValue;
-    displayBot.textContent = operate(firstNum, secondNum, operator).toFixed(2);
+    outcome = operate(firstNum, secondNum, operator).toFixed(2);
+    displayBot.textContent = outcome;
     displayTop.textContent = `${firstNum} ${operator} ${secondNum} =`;
 });
 
