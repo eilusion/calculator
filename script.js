@@ -9,10 +9,11 @@ const decimal = document.querySelector('.decimal');
 const equalsBtn = document.querySelector('.equals');
 const clearBtn = document.querySelector('.clearBtn');
 let displayValue;
-let firstNum;
-let secondNum;
-let operator;
-let outcome;
+let num1;
+let num2;
+let values = [
+    
+]
 
 function divide(x, y) {
     return x / y;
@@ -27,7 +28,7 @@ function add(x, y) {
     return x + y;
 };
 
-// calls the correct operator
+// CALLS THE CORRECT OPERATOR
 
 function operate(x, y, operator) {
     x = Number(x)
@@ -38,60 +39,57 @@ function operate(x, y, operator) {
         case '-': return subtract(x, y);
         case '+': return add(x, y);
         default:
-            return null
+            return y
     };
 };
+//^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+// USE THIS FUNCTION IDIOT
 
-// add click events to display value on screen
+function operationHandler(op) {
+    if (values.length < 1) {
+        num1 = displayValue
+        displayTop.textContent = `${num1} ${op}`;
+        displayBot.textContent = ``
+        values.push({number: `${num1}`, operator: `${op}`})
+    } else if (values.length > 0)
+}
+console.log(values)
+
+divideBtn.addEventListener('click', () => operationHandler('/'));
+multiplyBtn.addEventListener('click', () => operationHandler('*'));
+subtractBtn.addEventListener('click', () => operationHandler('-'));
+addBtn.addEventListener('click', () => operationHandler('+'));
+
+function equals() {
+    num2 = displayValue
+    displayBot.textContent = operate(values[0].number, num2, values[0].operator)
+}
+equalsBtn.addEventListener('click', () => equals());
+
+// TAKES NUMBERS FROM ARRAY AND PERFORMS/CHAINS CORRECT OPERATORS
+
+function calculate(state) {
+    return state.reduce(
+        (sum, value) => {
+            return operate(sum, value.number, value.operator)
+        },
+        0
+    )
+}
+
+// TAKES INPUT VALUES FROM USER
 
 numBtns.forEach(numBtn => numBtn.addEventListener('click', function () {
     displayValue = displayBot.textContent += numBtn.innerHTML;
-    console.log(displayValue);
 }));
 
-divideBtn.addEventListener('click', function () {
-    firstNum = displayValue;
-    displayTop.textContent = `${firstNum} ÷`;
-    displayBot.textContent = '';
-    operator = '/';
-});
+// RESETS CALCULATOR AND CLEARS SCREEN
 
-multiplyBtn.addEventListener('click', function () {
-    firstNum = displayValue;
-    displayTop.textContent = `${firstNum} *`;
-    displayBot.textContent = '';
-    operator = '*';
-});
-
-subtractBtn.addEventListener('click', function () {
-    firstNum = displayValue;
-    displayTop.textContent = `${firstNum} -`;
-    displayBot.textContent = '';
-    operator = '-';
-});
-
-addBtn.addEventListener('click', function () {
-    firstNum = displayValue;
-    displayTop.textContent = `${firstNum} +`;
-    displayBot.textContent = '';
-    operator = '+';
-});
-
-// calls operate function to sum entered numbers
-
-equalsBtn.addEventListener('click', function () {
-    secondNum = displayValue;
-    displayBot.textContent = operate(firstNum, secondNum, operator).toFixed(2);
-    displayTop.textContent = `${firstNum} ${operator} ${secondNum} =`;
-});
-
-// clears screen and digits stored
-
-clearBtn.addEventListener('click', function () {
+function clear() {
     displayBot.textContent = '';
     displayTop.textContent = '';
     displayValue = 0;
-    firstNum = 0;
-    secondNum = 0;
     operator = '';
-});
+}
+clearBtn.addEventListener('click', () => clear());
+
